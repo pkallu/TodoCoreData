@@ -28,7 +28,7 @@ class AddTodoViewController: ViewController {
     }
 
     @IBAction func saveTodo(_ sender: Any) {
-        guard let text = textViewTodo.text else {
+        guard let text = textViewTodo.text, !text.isEmpty else {
             print("Enter Todo")
             return
         }

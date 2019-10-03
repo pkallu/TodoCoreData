@@ -87,15 +87,24 @@
                                     <action selector="saveTodo:" destination="Xm1-AP-5wR" eventType="touchUpInside" id="9m7-MC-gbV"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter Todo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SEy-Cn-P1O">
+                                <rect key="frame" x="10" y="71" width="404" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="UM0-go-T0m" firstAttribute="trailing" secondItem="SEy-Cn-P1O" secondAttribute="trailing" id="4YM-Le-2gJ"/>
                             <constraint firstItem="tSs-6Q-vcf" firstAttribute="leading" secondItem="UM0-go-T0m" secondAttribute="leading" id="Pul-WX-kzi"/>
                             <constraint firstItem="UM0-go-T0m" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Wgb-vJ-SZ2" secondAttribute="trailing" id="QSy-rn-JDQ"/>
                             <constraint firstItem="tSs-6Q-vcf" firstAttribute="top" secondItem="UM0-go-T0m" secondAttribute="top" constant="120" id="SMg-xM-epP"/>
                             <constraint firstItem="tSs-6Q-vcf" firstAttribute="trailing" secondItem="UM0-go-T0m" secondAttribute="trailing" id="WN9-ax-dZo"/>
                             <constraint firstItem="Wgb-vJ-SZ2" firstAttribute="top" secondItem="UM0-go-T0m" secondAttribute="top" constant="10" id="XWd-QW-yl3"/>
+                            <constraint firstItem="SEy-Cn-P1O" firstAttribute="leading" secondItem="UM0-go-T0m" secondAttribute="leading" constant="10" id="Ymq-uN-1vQ"/>
                             <constraint firstItem="Wgb-vJ-SZ2" firstAttribute="leading" secondItem="UM0-go-T0m" secondAttribute="leading" constant="353" id="dTg-Gi-usV"/>
+                            <constraint firstItem="SEy-Cn-P1O" firstAttribute="top" secondItem="UM0-go-T0m" secondAttribute="top" constant="71" id="pfo-Iv-ZUn"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="UM0-go-T0m"/>
                     </view>
