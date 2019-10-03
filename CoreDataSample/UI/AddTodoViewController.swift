@@ -8,8 +8,13 @@
 
 import UIKit
 
+protocol AddTodoProtocol: AnyObject {
+    func didAddTodo()
+}
+
 class AddTodoViewController: ViewController {
     @IBOutlet weak var textViewTodo: UITextView!
+    weak var delegate: AddTodoProtocol?
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUI()
@@ -17,6 +22,9 @@ class AddTodoViewController: ViewController {
     
     private func setUpUI() {
         title = "Add"
+        textViewTodo.layer.cornerRadius = 3
+        textViewTodo.layer.borderColor = UIColor.lightGray.cgColor
+        textViewTodo.layer.borderWidth = 0.5
     }
 
     @IBAction func saveTodo(_ sender: Any) {
@@ -25,6 +33,7 @@ class AddTodoViewController: ViewController {
             return
         }
         Todo.createTodo(todoText: text)
+        delegate?.didAddTodo()
         self.dismiss(animated: true, completion: nil)
     }
 }

@@ -10,10 +10,16 @@ import UIKit
 
 class ViewController: UIViewController {
     @IBOutlet weak var tableViewTodo:UITableView!
-    lazy var todos: [Todo] = {
-        return Todo.getTodos()
-    }()
   
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "MySegueId" {
+            if let addTodoViewController = segue.destination as? AddTodoViewController {
+                addTodoViewController.delegate = self
+            }
+        }
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUI()
@@ -21,15 +27,13 @@ class ViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if tableViewTodo != nil {
-            tableViewTodo.reloadData()
-        }
-        DispatchQueue.global(qos: .background).async {
-            let todolist = Todo.getTodos()
-            DispatchQueue.main.async {
-                print(todolist)
-            }
-        }
+        //This is to test multi threading issue.
+//        DispatchQueue.global(qos: .background).async {
+//            let todolist = Todo.getTodos()
+//            DispatchQueue.main.async {
+//                print(todolist)
+//            }
+//        }
 
     }
     
@@ -37,7 +41,6 @@ class ViewController: UIViewController {
         super.viewDidAppear(animated)
 
     }
-    
     private func setUpUI() {
         title = "Todos"
     }
@@ -45,14 +48,20 @@ class ViewController: UIViewController {
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return todos.count
+        return  Todo.getTodos().count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")!
-        cell.textLabel?.text = todos[indexPath.row].todo
+        cell.textLabel?.text =  Todo.getTodos()[indexPath.row].todo
         return cell
     }
     
 }
 
+
+extension ViewController: AddTodoProtocol {
+    func didAddTodo() {
+        tableViewTodo.reloadData()
+    }    
+}
